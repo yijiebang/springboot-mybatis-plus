@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.www.jjy.mapper.UserDao">
+    <!--目的：为Dao接口方法提供SQL语句-->
+
+    <!--映射实体对象-->
+    <resultMap id="UserResultMap" type="com.www.jjy.bean.User">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="pwd" column="pwd" />
+        <result property="age" column="age" />
+    </resultMap>
+
+
+    <insert id="save">
+        INSERT INTO user(id,pwd, age, username)
+        VALUES (#{user.id},#{user.pwd}, #{user.age}, #{user.username})
+    </insert>
+
+    <select id="findById" resultType="User">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+</mapper>
